@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import sessionService from './services/sessions'
 import type { GameSession } from './types'
 
 function App() {
   const [sessions, setSessions] = useState<GameSession[]>([])
 
   useEffect(() => {
-    axios.get('http://localhost:3001/sessions')
+    sessionService.getAll()
       .then(response => {
-        setSessions(response.data)
+        setSessions(response)
       })
   }, [])
 
