@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { GameSession } from './types'
+import type { GameSession } from './types'
 
 function App() {
   const [sessions, setSessions] = useState<GameSession[]>([])
