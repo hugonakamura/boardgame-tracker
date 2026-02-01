@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { GameSession, NewGameSession } from '../types';
+import type { GameSession, NewGameSession } from '../../../common/types';
 
 const baseUrl = 'http://localhost:3001/sessions';
 

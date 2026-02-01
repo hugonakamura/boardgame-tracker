@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { BoardGame, NewBoardGame } from '../types';
+import type { BoardGame, NewBoardGame } from '../../../common/types';
 
 const baseUrl = 'http://localhost:3001/games';
 
