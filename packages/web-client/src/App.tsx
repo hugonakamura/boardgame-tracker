@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
-import sessionService from './services/sessions'
-import type { GameSession } from './types'
+import { useState, useEffect } from 'react';
+import sessionService from './services/sessions';
+import type { GameSession } from './types';
+import { GameManager } from './components/GameManager';
 
 function App() {
   const [sessions, setSessions] = useState<GameSession[]>([])
@@ -22,6 +23,7 @@ function App() {
           </li>
         ))}
       </ul>
+      <GameManager />
     </div>
   )
 }
