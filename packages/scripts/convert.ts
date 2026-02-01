@@ -4,15 +4,21 @@ import fsExtra from 'fs-extra';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// Recreate __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const sessions: any[] = [];
-let lastSeenDate = '';
-
 const csvFilePath = path.join(__dirname, 'sessions.csv');
 const dbPath = path.join(__dirname, '../../packages/json-server/db.json');
+
+// convert DD/MM/YYYY into YYYY-MM-DD
+const formatCsvDate = (rawDate: string): string => {
+  if (!rawDate || !rawDate.includes('/')) return rawDate;
+  const [day, month, year] = rawDate.split('/');
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+};
+
+const sessions: any[] = [];
+let lastSeenDate = '';
 
 fs.createReadStream(csvFilePath)
   .pipe(csv())
@@ -24,7 +30,7 @@ fs.createReadStream(csvFilePath)
 
     // remember last day seen
     if (row.day && row.day.trim() !== '') {
-      lastSeenDate = row.day;
+      lastSeenDate = formatCsvDate(row.day);
     }
 
     sessions.push({
