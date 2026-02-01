@@ -1,7 +1,7 @@
 export interface GameSession {
   id: string;
   game: string;
-  outcome: 'Win' | 'Loss' | 'Draw';
+  outcome: string;
   date: string;
   duration?: number;
   hero?: string;    // Optional
