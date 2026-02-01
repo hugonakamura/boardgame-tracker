@@ -8,3 +8,5 @@ export interface GameSession {
   villain?: string; // Optional
   scenario?: string;
 }
+
+export type NewGameSession = Omit<GameSession, 'id'>;
